@@ -1,28 +1,27 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+    <ons-navigator>
+      <div :is="page" v-for="page in pageStack" :page_stack="pageStack"></div>
+    </ons-navigator>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Page1 from './components/Page1'
+import Page2 from './components/Page2'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Page1, Page2
+  },
+  data: function () {
+    return {
+      pageStack: [Page1, Page2]
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
