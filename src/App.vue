@@ -1,25 +1,30 @@
 <template>
   <div id="app">
-    <ons-navigator>
-      <div :is="page" v-for="page in pageStack" :page_stack="pageStack"></div>
-    </ons-navigator>
+    <v-ons-navigator>
+      <div :is="page" v-for="page in pageStack" :pageStack="pageStack"></div>
+    </v-ons-navigator>
+    <loading :status="getLoadingStatus"></loading>
   </div>
 </template>
 
 <script>
-import Page1 from './components/Page1'
-import Page2 from './components/Page2'
+import { mapGetters } from 'vuex'
+import Intro from './page/Intro'
+import Loading from './components/Loading'
 
 export default {
   name: 'app',
   components: {
-    Page1, Page2
+    Loading
   },
   data: function () {
     return {
-      pageStack: [Page1, Page2]
+      pageStack: [Intro]
     }
-  }
+  },
+  computed: mapGetters([
+    'getLoadingStatus'
+  ])
 }
 </script>
 
