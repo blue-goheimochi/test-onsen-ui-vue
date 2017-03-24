@@ -9,22 +9,16 @@
     <div class="register">
       <h4>Step1-2</h4>
       <p>
-        学部・学科を選択してください
+        あなたの専攻に一番近い分野を選んでね！
+      </p>
+      <p>
+        同じ専攻の先輩を探せるよ。
       </p>
       <v-ons-list>
-        <v-ons-list-header>
-          学部
-        </v-ons-list-header>
-        <v-ons-list-item modifier="chevron" tappable>学部を選択</v-ons-list-item>
-      </v-ons-list>
-      <v-ons-list>
-        <v-ons-list-header>
-          学科
-        </v-ons-list-header>
-        <v-ons-list-item modifier="chevron" tappable>学科を選択</v-ons-list-item>
+        <v-ons-list-item v-for="item in department" modifier="chevron"><div v-bind:name="item.value" v-on:click="selectDepartment">{{item.text}}</div></v-ons-list-item>
       </v-ons-list>
       <div class="skip-select">
-        <a v-on:click="gotoNext">学部・学科入力をスキップする</a>
+        <a v-on:click="gotoNext">専攻選択をスキップする</a>
       </div>
     </div>
   </v-ons-page>
@@ -32,7 +26,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import Step3 from './Step3'
+import Step4 from './Step4'
 
 export default {
   name: 'register',
@@ -42,25 +36,26 @@ export default {
       university: '',
       department: [
         {
-          value: '選択してください',
-          text: '選択してください'
+          value: '人文科学系',
+          text: '人文科学系'
         },
         {
-          value: '経済学部',
-          text: '経済学部'
+          value: '社会科学系',
+          text: '社会科学系'
         },
         {
-          value: '人文学部',
-          text: '人文学部'
+          value: '自然科学系',
+          text: '自然科学系'
+        },
+        {
+          value: '医学・医療・家政・体育',
+          text: '医学・医療・家政・体育'
         },
         {
           value: 'その他',
           text: 'その他'
         }
-      ],
-      selectedDepartment: '選択してください',
-      searchItems: [],
-      searchResultText: '大学名を入力してください'
+      ]
     }
   },
   watch: {
@@ -71,7 +66,10 @@ export default {
       this.pageStack.pop()
     },
     gotoNext: function () {
-      this.pageStack.push(Step3)
+      this.pageStack.push(Step4)
+    },
+    selectDepartment: function (event) {
+      this.gotoNext()
     },
     ...mapActions([
       'showLoading',
