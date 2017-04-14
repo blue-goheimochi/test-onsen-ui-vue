@@ -1,13 +1,15 @@
 <template>
   <v-ons-page>
     <div id="intro">
-      <v-ons-carousel v-ons-index="carouselIndex" fullscreen swipeable auto-scroll overscrollable>
-        <v-ons-carousel-item v-for="item in items" :style="{backgroundColor: item.bg}">
+      <v-ons-carousel :index="carouselIndex" fullscreen swipeable auto-scroll overscrollable>
+        <v-ons-carousel-item v-for="item in items"  v-bind:key="item.text" :style="{backgroundColor: item.bg}">
           <div style="text-align: center; font-size: 30px; margin-top: 20px; color: #fff;">{{item.text}}</div>
         </v-ons-carousel-item>
       </v-ons-carousel>
-      <div class="button-bar" style="width:100%; bottom:70px; position:absolute; text-align: center;">
-        <span class="indicator" v-bind:class="{ active: carouselIndex==index }"  v-for="(item, index) in items" v-on:click="setActiveCarouselIndex(index)">{{index}}</span>
+      <div class="button-bar">
+        <div class="indicator-wrap">
+          <span class="indicator" v-bind:class="{ active: carouselIndex==index }"  v-for="(item, index) in items" v-on:click="setActiveCarouselIndex(index)">{{index}}</span>
+        </div>
       </div>
       <div style="width: 100%; position: absolute; bottom: 10px;">
         <div style="padding: 0 10px;">
@@ -55,6 +57,14 @@ export default {
 </script>
 
 <style>
+.button-bar {
+  width: 100%;
+  bottom: 70px;
+  position: absolute;
+}
+.indicator-wrap {
+  margin: 0 auto;
+}
 .indicator {
   display: inline-block;
   width: 13px;

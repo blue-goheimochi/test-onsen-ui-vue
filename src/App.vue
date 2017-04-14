@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <v-ons-navigator>
-      <div :is="page" v-for="page in pageStack" :pageStack="pageStack"></div>
+    <v-ons-navigator :page-stack="pageStack">
+      <div :is="page" v-for="page in pageStack" :page-stack="pageStack"></div>
     </v-ons-navigator>
     <loading :status="getLoadingStatus"></loading>
   </div>

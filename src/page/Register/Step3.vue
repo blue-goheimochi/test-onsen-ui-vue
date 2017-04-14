@@ -15,7 +15,7 @@
         同じ専攻の先輩を探せるよ。
       </p>
       <v-ons-list>
-        <v-ons-list-item v-for="item in department" modifier="chevron"><div v-bind:name="item.value" v-on:click="selectDepartment">{{item.text}}</div></v-ons-list-item>
+        <v-ons-list-item v-for="item in department" v-bind:key="item.key" modifier="chevron" tappable><div v-bind:name="item.value" v-on:click="selectDepartment">{{item.text}}</div></v-ons-list-item>
       </v-ons-list>
       <div class="skip-select">
         <a v-on:click="gotoNext">専攻選択をスキップする</a>

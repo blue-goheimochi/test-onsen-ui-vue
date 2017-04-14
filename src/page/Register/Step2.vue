@@ -16,6 +16,7 @@
         <v-ons-list-item>
           <v-ons-input
             placeholder="例）とうきょうだいがく"
+            class="input-univ"
             v-bind:value="university"
             v-on:input="inputUniversity"
           >
@@ -24,7 +25,7 @@
       </v-ons-list>
       <v-ons-list class="search-result">
         <v-ons-list-header>検索結果</v-ons-list-header>
-        <v-ons-list-item v-for="item in searchItems" v-show="searchItems.length > 0" modifier="longdivider"><div class="select-university" v-bind:name="item.key" v-on:click="selectUniversity">{{item.name}}</div></v-ons-list-item>
+        <v-ons-list-item v-for="item in searchItems" v-bind:key="item.key" v-show="searchItems.length > 0" modifier="longdivider"><div class="select-university" v-bind:name="item.key" v-on:click="selectUniversity">{{item.name}}</div></v-ons-list-item>
         <v-ons-list-item v-show="searchItems.length == 0"><div class="select-university">{{searchResultText}}</div></v-ons-list-item>
       </v-ons-list>
       <div class="skip-select">
@@ -104,6 +105,13 @@ export default {
 </script>
 
 <style>
+.list-header {
+  padding: 10px;
+  font-weight: bold;
+}
+.list-header.list-header--material {
+  padding: 20px 0 0 15px;
+}
 p {
   padding-right: 10px;
   padding-left: 10px;
@@ -118,10 +126,13 @@ h4 {
   padding-right: 10px;
   padding-left: 10px;
 }
-.search-result .list__item {
+.input-univ {
+  width: 100%;
+}
+.search-result .list-item {
   padding-left: 0;
 }
-.search-result .list__item .list__item__center {
+.search-result .list-item .list-item__center {
   padding: 0;
 }
 .select-university {

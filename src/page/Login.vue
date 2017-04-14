@@ -63,11 +63,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.list__header {
+.list-header {
   padding: 10px;
   font-weight: bold;
 }
-.list__header.list__header--material {
+.list-header.list-header--material {
   padding: 20px 0 0 15px;
 }
 .btn-login {

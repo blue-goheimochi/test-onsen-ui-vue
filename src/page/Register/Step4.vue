@@ -10,7 +10,7 @@
       <h4>Step1-2</h4>
       <v-ons-list>
         <v-ons-list-header>人文科学系</v-ons-list-header>
-        <v-ons-list-item v-for="item in department" modifier="chevron" tappable>{{item.text}}</v-ons-list-item>
+        <v-ons-list-item v-for="item in department" v-bind:key="item.key" modifier="chevron" tappable>{{item.text}}</v-ons-list-item>
       </v-ons-list>
       <div class="skip-select">
         <a v-on:click="gotoNext">専攻選択をスキップする</a>

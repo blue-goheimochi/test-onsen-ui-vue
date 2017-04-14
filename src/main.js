@@ -11,7 +11,8 @@ import Vue from 'vue'
 import App from './App'
 
 // Onsen UI JS
-import 'onsenui'
+import OnsenUI from 'onsenui'
+OnsenUI.disableAutoStatusBarFill()
 import VueOnsen from 'vue-onsenui'
 Vue.use(VueOnsen)
 
